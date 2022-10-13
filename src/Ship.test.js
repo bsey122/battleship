@@ -29,3 +29,8 @@ test('Ship of length 3 should sink from 3 hits', () => {
   ship.hit();
   expect(ship.isSunk()).toBe(true);
 });
+
+test('Returns the length of ship', () => {
+  const ship = Ship(3);
+  expect(ship.getLength()).toBe(3);
+});
