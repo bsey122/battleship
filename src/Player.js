@@ -4,7 +4,7 @@ const Player = (name) => {
   }
 
   function attack(x, y, gameboard) {
-    gameboard.receiveAttack(x, y);
+    return gameboard.receiveAttack(x, y);
   }
   return { getName, attack };
 };
