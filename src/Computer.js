@@ -11,7 +11,7 @@ const Computer = (name) => {
   }
 
   function autoAttack(coordinates, computerAttack, gameboard) {
-    const { x, y } = coordinates();
+    const { x, y } = coordinates;
     const isAttacked = attackList.some(
       (coordinate) => coordinate.x === x && coordinate.y === y
     );
