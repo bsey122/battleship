@@ -17,7 +17,7 @@ test('Computer can make random attacks', () => {
   const fakeAttack = (x, y, gameboard) => computer.attack(x, y, gameboard);
 
   const expected = computer.autoAttack(
-    fakeAttackCoordinates,
+    fakeAttackCoordinates(),
     fakeAttack,
     board
   );
@@ -40,7 +40,7 @@ test('Adds attack to attackList', () => {
     return { x: fakeX, y: fakeY };
   };
 
-  computer.autoAttack(fakeAttackCoordinates, computerAttack, board);
+  computer.autoAttack(fakeAttackCoordinates(), computerAttack, board);
   expect(computer.attackList).toEqual([{ x: 4, y: 0 }]);
 });
 
@@ -59,8 +59,8 @@ test("Computer shouldn't attack the same spot more than once", () => {
     return { x: fakeX, y: fakeY };
   };
 
-  computer.autoAttack(fakeAttackCoordinates, computerAttack, board);
-  computer.autoAttack(fakeAttackCoordinates, computerAttack, board);
+  computer.autoAttack(fakeAttackCoordinates(), computerAttack, board);
+  computer.autoAttack(fakeAttackCoordinates(), computerAttack, board);
 
   expect(computer.attackList).toEqual([{ x: 4, y: 0 }]);
 });
