@@ -62,6 +62,13 @@ const Gameboard = () => {
     return placedShips.every((ship) => ship.isSunk() === true);
   }
 
-  return { getBoardPosition, placeShip, receiveAttack, missedShots, isSunk };
+  return {
+    getBoardPosition,
+    placeShip,
+    receiveAttack,
+    missedShots,
+    isSunk,
+    board,
+  };
 };
 export default Gameboard;
