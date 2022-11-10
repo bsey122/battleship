@@ -22,7 +22,7 @@ test('Computer can make random attacks', () => {
     board
   );
 
-  expect(expected).toEqual([4, 0]);
+  expect(expected).toEqual({ attackResult: [4, 0], isAttacked: false });
 });
 
 test('Adds attack to attackList', () => {
