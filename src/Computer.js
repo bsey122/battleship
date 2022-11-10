@@ -12,13 +12,15 @@ const Computer = (name) => {
 
   function autoAttack(coordinates, computerAttack, gameboard) {
     const { x, y } = coordinates;
+    let attackResult;
     const isAttacked = attackList.some(
       (coordinate) => coordinate.x === x && coordinate.y === y
     );
     if (!isAttacked) {
       attackList.push({ x, y });
+      attackResult = computerAttack(x, y, gameboard);
     }
-    return computerAttack(x, y, gameboard);
+    return { attackResult, isAttacked };
   }
 
   return { autoAttack, attack, getName, randomCoordinates, attackList };
