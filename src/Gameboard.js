@@ -16,8 +16,7 @@ const Gameboard = () => {
     return position;
   }
 
-  function placeShip(x, y, ship, dir) {
-    const length = ship.getLength();
+  function isValidMove(x, y, length, dir) {
     if (dir === 'hor') {
       if (x + length > 10) {
         return false;
@@ -27,21 +26,33 @@ const Gameboard = () => {
           return false;
         }
       }
+    } else if (dir === 'ver') {
+      if (length + y > 10) {
+        return false;
+      }
+      for (let i = 0; i < length; i++) {
+        if (board[x][y]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  function placeShip(x, y, ship, dir) {
+    const length = ship.getLength();
+    const validMove = isValidMove(x, y, length, dir);
+    if (!validMove) {
+      return validMove;
+    }
+    if (dir === 'hor') {
       for (let i = 0; i < length; i++) {
         board[x + i][y] = ship;
       }
       placedShips.push(ship);
     } else if (dir === 'ver') {
-      if (length - y > 0) {
-        return false;
-      }
       for (let i = 0; i < length; i++) {
-        if (board[x][y - i]) {
-          return false;
-        }
-      }
-      for (let i = 0; i < length; i++) {
-        board[x][y - i] = ship;
+        board[x][y + i] = ship;
       }
       placedShips.push(ship);
     }
@@ -69,6 +80,7 @@ const Gameboard = () => {
     missedShots,
     isSunk,
     board,
+    isValidMove,
   };
 };
 export default Gameboard;
