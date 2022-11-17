@@ -31,7 +31,7 @@ const Gameboard = () => {
         return false;
       }
       for (let i = 0; i < length; i++) {
-        if (board[x][y]) {
+        if (board[x][y + i]) {
           return false;
         }
       }
