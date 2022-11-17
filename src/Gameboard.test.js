@@ -41,17 +41,17 @@ test('Placed ship at location (2,7) has correct length of 3 vertically', () => {
   const ship = Ship(3);
   board.placeShip(2, 7, ship, 'ver');
   expect(board.getBoardPosition(2, 7)).toBeTruthy();
-  expect(board.getBoardPosition(2, 6)).toBeTruthy();
-  expect(board.getBoardPosition(2, 5)).toBeTruthy();
+  expect(board.getBoardPosition(2, 8)).toBeTruthy();
+  expect(board.getBoardPosition(2, 9)).toBeTruthy();
 });
 
 test('Should not place a ship that goes out of the board vertically', () => {
   const board = Gameboard();
   const ship = Ship(4);
-  board.placeShip(3, 2, ship, 'ver');
-  expect(board.getBoardPosition(3, 2)).toBeFalsy();
-  expect(board.getBoardPosition(3, 1)).toBeFalsy();
-  expect(board.getBoardPosition(3, 0)).toBeFalsy();
+  board.placeShip(3, 7, ship, 'ver');
+  expect(board.getBoardPosition(3, 7)).toBeFalsy();
+  expect(board.getBoardPosition(3, 8)).toBeFalsy();
+  expect(board.getBoardPosition(3, 9)).toBeFalsy();
 });
 
 test('Should not place ship if a ship is already there vertically', () => {
@@ -59,8 +59,8 @@ test('Should not place ship if a ship is already there vertically', () => {
   const ship = Ship(3);
   board.placeShip(2, 3, ship, 'hor');
   expect(board.placeShip(2, 3, ship, 'ver')).toBe(false);
-  expect(board.getBoardPosition(2, 2)).toBeFalsy();
-  expect(board.getBoardPosition(2, 1)).toBeFalsy();
+  expect(board.getBoardPosition(2, 4)).toBeFalsy();
+  expect(board.getBoardPosition(2, 5)).toBeFalsy();
 });
 
 test('Attack hit the ship', () => {
