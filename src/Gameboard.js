@@ -81,6 +81,7 @@ const Gameboard = () => {
     isSunk,
     board,
     isValidMove,
+    placedShips,
   };
 };
 export default Gameboard;
