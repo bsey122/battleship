@@ -73,6 +73,28 @@ const Gameboard = () => {
     return placedShips.every((ship) => ship.isSunk() === true);
   }
 
+  function randomCoordinates() {
+    const x = Math.floor(Math.random() * 10);
+    const y = Math.floor(Math.random() * 10);
+    return { x, y };
+  }
+
+  function randomDirection() {
+    const randomNumber = Math.round(Math.random());
+    if (randomNumber === 0) {
+      return 'hor';
+    }
+    return 'ver';
+  }
+
+  function autoPlaceShip(ship) {
+    const { x, y } = randomCoordinates();
+    const direction = randomDirection();
+    const isShipPlaced = placeShip(x, y, ship, direction);
+    if (!isShipPlaced) {
+      autoPlaceShip(ship);
+    }
+  }
   return {
     getBoardPosition,
     placeShip,
@@ -82,6 +104,7 @@ const Gameboard = () => {
     board,
     isValidMove,
     placedShips,
+    autoPlaceShip,
   };
 };
 export default Gameboard;
