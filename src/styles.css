@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+:root {
+  box-sizing: border-box;
+  --grid-size: 30px;
+  --dot-size: 25%;
+  --primary-color: rgb(44, 142, 233);
+  --secondary-color: rgb(3, 91, 207);
+  --miss-color: white;
+  --ship-color: rgb(150, 150, 150);
+  --font-color: #273547e7;
+  --ff-sans-serif: 'Rubik', sans-serif;
+  color: var(--font-color);
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  font-size: 1.5rem;
+}
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  gap: 5rem;
+  font-family: var(--ff-sans-serif);
+}
+.gameboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.gameboard {
+  display: grid;
+  width: 300px;
+  height: 300px;
+  grid-template-columns: repeat(10, 1fr);
+  background-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.square {
+  display: grid;
+  width: var(--grid-size);
+  height: var(--grid-size);
+  border: thin solid var(--secondary-color);
+  place-items: center;
+}
+.ship {
+  background-color: var(--ship-color);
+}
+.ship-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem;
+  width: min-content;
+}
+.ship-container [data-direction='hor'] {
+  display: flex;
+}
+.part {
+  width: var(--grid-size);
+  height: var(--grid-size);
+}
+.hit::before {
+  content: '';
+  background-color: red;
+  border-radius: 50%;
+  width: var(--dot-size);
+  height: var(--dot-size);
+}
+.miss::before {
+  content: '';
+  background-color: var(--miss-color);
+  border-radius: 50%;
+  width: var(--dot-size);
+  height: var(--dot-size);
+}
+.sunk {
+  background-color: darkred;
+}
+.ship.hide {
+  display: none;
+}
+.drag-over {
+  border: solid 3px green;
+}
+.invalid {
+  border: solid 2px red;
+}
+.game-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: 1/3;
+  gap: 2rem;
+}
+.game-results button {
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+}
+.player-name {
+  align-self: center;
+}
